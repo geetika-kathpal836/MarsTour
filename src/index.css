@@ -1,0 +1,251 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Exo+2:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap');
+
+:root {
+  --background: 230 25% 5%;
+  --foreground: 210 20% 92%;
+
+  --card: 230 20% 10%;
+  --card-foreground: 210 20% 92%;
+
+  --popover: 230 20% 10%;
+  --popover-foreground: 210 20% 92%;
+
+  --primary: 12 80% 55%;
+  --primary-foreground: 0 0% 100%;
+
+  --secondary: 210 30% 20%;
+  --secondary-foreground: 210 20% 90%;
+
+  --muted: 230 15% 15%;
+  --muted-foreground: 215 15% 55%;
+
+  --accent: 210 60% 45%;
+  --accent-foreground: 210 20% 95%;
+
+  --border: 230 15% 18%;
+  
+  --mars-red: 12 80% 55%;
+  --mars-orange: 25 90% 55%;
+  --mars-glow: 15 100% 60%;
+  --deep-space: 230 25% 5%;
+  --space-navy: 225 30% 12%;
+  --star-white: 210 20% 92%;
+
+  --gradient-mars: linear-gradient(135deg, hsl(12 80% 55%), hsl(25 90% 55%));
+  
+  --font-display: 'Orbitron', sans-serif;
+  --font-body: 'Exo 2', sans-serif;
+}
+
+* {
+  border-color: hsl(var(--border));
+}
+
+body {
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  font-family: var(--font-body);
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+}
+
+::selection {
+  background: hsl(var(--mars-red) / 0.3);
+  color: hsl(var(--star-white));
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: hsl(var(--deep-space));
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--mars-red) / 0.4);
+  border-radius: 3px;
+}
+
+/* ── Glass panels ── */
+.glass-panel {
+  background-color: hsl(var(--card) / 0.3);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid hsl(var(--border) / 0.3);
+  border-radius: 0.5rem;
+  box-shadow: inset 0 1px 0 0 hsl(var(--star-white) / 0.05);
+}
+
+/* ── Text effects ── */
+.glow-text {
+  text-shadow: 0 0 20px hsl(var(--mars-red) / 0.5), 0 0 60px hsl(var(--mars-red) / 0.2);
+}
+
+.glow-line {
+  height: 1px;
+  width: 100%;
+  background: linear-gradient(90deg, transparent, hsl(var(--mars-red) / 0.6), transparent);
+}
+
+.mars-gradient-text {
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  background-image: var(--gradient-mars);
+}
+
+/* ── Section blends ── */
+.section-blend-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 8rem;
+  z-index: 10;
+  pointer-events: none;
+  background: linear-gradient(180deg, hsl(var(--deep-space)), transparent);
+}
+
+.section-blend-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 8rem;
+  z-index: 10;
+  pointer-events: none;
+  background: linear-gradient(0deg, hsl(var(--deep-space)), transparent);
+}
+
+/* ── Animations ── */
+.float-animation {
+  animation: float 6s ease-in-out infinite;
+}
+
+.pulse-glow {
+  animation: pulseGlow 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 1; }
+}
+
+@keyframes rocketLaunch {
+  0% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-30px) scale(1.05); }
+  100% { transform: translateY(-200vh) scale(0.5); }
+}
+
+@keyframes dustFloat {
+  0% { transform: translateX(0) translateY(0); opacity: 0; }
+  20% { opacity: 0.6; }
+  100% { transform: translateX(100px) translateY(-50px); opacity: 0; }
+}
+
+/* ── Mission Buttons ── */
+.btn-mission {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+@media (min-width: 768px) {
+  .btn-mission {
+    font-size: 0.875rem;
+    padding: 1rem 2rem;
+  }
+}
+
+.btn-mission-primary {
+  background-color: hsl(var(--primary) / 0.2);
+  border: 1px solid hsl(var(--primary) / 0.5);
+  color: hsl(var(--primary-foreground));
+}
+.btn-mission-primary:hover {
+  background-color: hsl(var(--primary) / 0.4);
+  box-shadow: 0 0 20px hsl(var(--mars-red) / 0.5);
+}
+
+.btn-mission-ghost {
+  background-color: transparent;
+  border: 1px solid hsl(var(--border) / 0.4);
+  color: hsl(var(--foreground) / 0.8);
+}
+.btn-mission-ghost:hover {
+  border-color: hsl(var(--primary) / 0.5);
+  color: hsl(var(--primary));
+  background-color: hsl(var(--primary) / 0.05);
+}
+
+/* ── Mission Nav ── */
+.mission-nav-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+.mission-nav-text {
+  font-family: var(--font-display);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  opacity: 0;
+  color: transparent;
+}
+.mission-nav-btn:hover .mission-nav-text {
+  opacity: 1;
+  color: hsl(var(--foreground) / 0.6);
+}
+.mission-nav-text.active {
+  opacity: 1 !important;
+  color: hsl(var(--primary)) !important;
+}
+.mission-nav-dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background-color: hsl(var(--foreground) / 0.3);
+  transition: all 0.3s ease;
+}
+.mission-nav-btn:hover .mission-nav-dot {
+  background-color: hsl(var(--foreground) / 0.6);
+}
+.mission-nav-dot.active {
+  background-color: hsl(var(--primary)) !important;
+  transform: scale(1.25);
+}
+
+/* ── Module Overlay ── */
+.module-close-btn {
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.module-close-btn:hover {
+  background-color: hsl(var(--primary) / 0.2);
+}
+.module-close-btn:hover svg {
+  color: hsl(var(--primary)) !important;
+}
+
+/* ── Pointer events helper ── */
+.pointer-events-none {
+  pointer-events: none;
+}
